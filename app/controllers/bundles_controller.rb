@@ -34,7 +34,7 @@ class BundlesController < ApplicationController
 
   def update
     @bundle = BundlesOffer.find(params[:id])
-    @bundle.update(tasks_params)
+    @bundle.update(bundles_offer_params)
     redirect_to bundles_url
   end
 
