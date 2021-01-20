@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get '/success', to: 'pages#success'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :bundles do
-    resources :reviews, only: [:edit]
-    resources :bookings, only: [:new, :create, :index, :show]
+    # resources :reviews, only: [:edit]
+    resources :bookings, only: [:new, :create, :index, :show] do
+      resources :reviews, only: [:create, :update, :edit]
+    end
   end
-  resources :reviews, only: [:create, :update]
 end

@@ -1,4 +1,4 @@
-class BundlesController < ApplicationController
+class BundlesOffersController < ApplicationController
   def index
     @bundles = BundlesOffer.all
   end
