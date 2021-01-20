@@ -7,7 +7,7 @@ class BundlesOffersController < ApplicationController
     if BundlesOffer.exists?(params[:id])
       @bundle = BundlesOffer.find(params[:id])
     else
-      redirect_to bundles_url
+      redirect_to bundles_offers_url
     end
   end
 
@@ -18,7 +18,7 @@ class BundlesOffersController < ApplicationController
   def create
     @bundle = BundlesOffer.new(bundles_offer_params)
     if @bundle.save
-      redirect_to bundles_url
+      redirect_to bundles_offers_url
     else
       render :new
     end
@@ -28,20 +28,20 @@ class BundlesOffersController < ApplicationController
     if BundlesOffer.exists?(params[:id])
       @bundle = BundlesOffer.find(params[:id])
     else
-      redirect_to bundles_url
+      redirect_to bundles_offers_url
     end
   end
 
   def update
     @bundle = BundlesOffer.find(params[:id])
     @bundle.update(bundles_offer_params)
-    redirect_to bundles_url
+    redirect_to bundles_offers_url
   end
 
   def destroy
     @bundle = BundlesOffer.find(params[:id])
     @bundle.destroy
-    redirect_to bundles_url
+    redirect_to bundles_offers_url
   end
 
   private
@@ -50,4 +50,5 @@ class BundlesOffersController < ApplicationController
     params.require(:BundlesOffer).permit(:name, :description, :price, :user_id)
     # I don't know if user id will work
   end
+
 end
