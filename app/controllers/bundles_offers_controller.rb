@@ -47,8 +47,7 @@ class BundlesOffersController < ApplicationController
   private
 
   def bundles_offer_params
-    params.require(:BundlesOffer).permit(:name, :description, :price, :user_id)
-    # I don't know if user id will work
+    params.require(:BundlesOffer).permit(:name, :description, :price, :photo)
   end
 
 end
