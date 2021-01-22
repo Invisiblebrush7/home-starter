@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 6666_66_66_666668) do
     t.string "first_name"
     t.string "last_name"
     t.string "shipping_address"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

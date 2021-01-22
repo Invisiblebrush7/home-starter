@@ -1,1 +1,7 @@
 <h1> All Bundles </h1>
+
+
+<% @bundles.each do |bundle| %>
+  <h4>Name: <%= bundle.name %> </h4>
+  <h5>Description: <%= bundle.description %> </h5>
+<% end %>

@@ -1,1 +1,15 @@
 <h1> Show a specific bundle </h1>
+
+
+<h3> Name: <%= @bundle.name %> </h3>
+
+
+<p> <%= @bundle.description %> </p>
+
+
+
+<br>
+<br>
+<br>
+
+<%= link_to "Book this Bundle!", new_bundles_offer_booking_url(@bundle.id)  %>
