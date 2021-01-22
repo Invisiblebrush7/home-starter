@@ -1,12 +1,12 @@
 .banner {
   padding: 200px;
-  background-image: url("couch.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("couch.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .container h1 {
-  color: $tart-orange;
+  color: white;
   text-shadow: 0 0 15 rgba(0,0,0,0.5);
 }
 
