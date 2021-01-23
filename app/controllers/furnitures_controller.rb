@@ -21,9 +21,19 @@ class FurnituresController < ApplicationController
   end
 
   def edit
+    @furniture = Furniture.find(params[:id])
+  end
+
+  def update
+    @furniture = Furniture.find(params[:id])
+    @furniture.update(furniture_params)
+    redirect_to furniture_path(@furniture)
   end
 
   def destroy
+    @furniture = Furniture.find(params[:id])
+    @furniture.destroy
+    redirect_to furnitures_path
   end
 
   private
