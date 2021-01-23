@@ -2,6 +2,7 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "pages/home";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -18,3 +19,6 @@
 @import "components/button";
 @import "components/backgrounds";
 @import "components/show_bundle";
+@import "components/forms";
+@import "components/bundle_cards";
+@import "components/seller-banner";
