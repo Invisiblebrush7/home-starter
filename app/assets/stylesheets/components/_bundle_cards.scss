@@ -1,0 +1,42 @@
+.bundle-cards{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding:16px;
+  flex-grow: 1;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("bedroom.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  color: white;
+}
+
+@media(max-width: 992px) {
+  .bundle-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+  .bundle-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.bundle-card {
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 22px;
+  color: white;
+  font-weight: bolder;
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}

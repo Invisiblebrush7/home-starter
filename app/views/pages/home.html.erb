@@ -20,13 +20,13 @@
 
   <div class="signup-btn">
     <% if !user_signed_in? %>
-    <%= link_to "Log In", new_user_session_url, class: "margin-right-navbar" %>
+    <%= link_to "Seller Log In", new_user_session_url, class: "margin-right-navbar" %>
     <% end %>
 
   <% if user_signed_in? %>
     <%= link_to "Log Out", destroy_user_session_url, method: :delete  %>
     <% else %>
-    <%= link_to "Sign Up", new_user_registration_url, class: "btn-secondary" %>
+    <%= link_to "Sign Up as Seller", new_user_registration_url, class: "btn-secondary" %>
     <% end %>
   </div>
 </div>
