@@ -1,0 +1,29 @@
+.btn-primary {
+  background: $bright-green;
+  display: inline-block;
+  padding: 16px 36px;
+  color: white;
+  border-radius: 60px;
+}
+
+.btn-secondary {
+  background: $tart-orange;
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 15px;
+}
+
+.btn-tertiary {
+  background: $bright-green;
+  display: inline-block;
+  // padding: 16px 36px;
+  color: white;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 25px;
+}
+
+// .btn-lesser {
+//   text-align: center;
+// }

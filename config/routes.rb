@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :bookings, shallow: true
     resources :reviews, shallow: true
   end
+  resources :furnitures
 end
