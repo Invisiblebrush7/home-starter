@@ -1,24 +1,16 @@
-<h1> <%= @bundle.name.capitalize %> </h1>
-
-<% @bundle.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-
-<br>
-<br>
-<br>
-<h3>Furnitures</h3>
+<div class="container show"> 
+<h3> <%= @bundle.name.capitalize %> </h1>
+<p> <%= @bundle.description %> </p>
+</div>
+<div class="container"> 
 <% @bundle.furnitures.each do |furniture| %>
   <p> <%= furniture.name %> </p>
 <% end %>
-
-<h3>Description</h3>
-
-<p> <%= @bundle.description.capitalize %> </p>
-
-
-<%= link_to "Go back", bundles_offers_url, class: "btn btn-primary"  %>
-
+<% @bundle.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+</div>
 <br>
-<br>
-<br>
+<div class="container"> 
+<%= link_to "back", bundles_offers_url, class: "btn btn-primary"  %>
+</div>
