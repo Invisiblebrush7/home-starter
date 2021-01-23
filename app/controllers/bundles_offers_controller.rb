@@ -4,6 +4,7 @@ class BundlesOffersController < ApplicationController
   end
 
   def show
+
     if BundlesOffer.exists?(params[:id])
       @bundle = BundlesOffer.find(params[:id])
     else
@@ -17,6 +18,7 @@ class BundlesOffersController < ApplicationController
 
   def create
     @bundle = BundlesOffer.new(bundles_offer_params)
+    @bundle.user = current_user
     if @bundle.save
       redirect_to bundles_offers_url
     else
@@ -47,8 +49,7 @@ class BundlesOffersController < ApplicationController
   private
 
   def bundles_offer_params
-    params.require(:BundlesOffer).permit(:name, :description, :price, :user_id)
+    params.require(:bundles_offer).permit(:name, :description, :price, photos: [])
     # I don't know if user id will work
   end
-
 end

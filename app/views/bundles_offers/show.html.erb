@@ -1,9 +1,13 @@
 <h1> <%= @bundle.name.capitalize %> </h1>
 
+<% @bundle.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
 <br>
 <h3>Description</h3>
 
 <p> <%= @bundle.description.capitalize %> </p>
 
 
-<%= link_to "Go back", bundles_offers_url  %>
+<%= link_to "Go back", bundles_offers_url, class: "btn btn-primary"  %>
