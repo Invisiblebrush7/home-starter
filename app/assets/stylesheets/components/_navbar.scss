@@ -2,6 +2,7 @@
   justify-content: space-around;
   padding: 10px;
   background: white;
+  height: 100px;
 }
 
 .navbar.navbar-collapse {
@@ -10,4 +11,12 @@
 
 .navbar.navbar-brand img {
   width: 40px;
+}
+
+.logo {
+  width: 40px;
+}
+
+.margin-right-navbar {
+  margin-right: 10px;
 }

@@ -14,10 +14,21 @@
 
 <!-- Top Nav -->
 <div class="navbar">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+  <%= image_tag "house-logo.png", class: "logo" %>
+  <a href="#news">Contact</a>
+  <a href="#contact">About</a>
+
+  <div class="signup-btn">
+    <% if !user_signed_in? %>
+    <%= link_to "Log In", new_user_session_url, class: "margin-right-navbar" %>
+    <% end %>
+
+  <% if user_signed_in? %>
+    <%= link_to "Log Out", destroy_user_session_url, method: :delete  %>
+    <% else %>
+    <%= link_to "Sign Up", new_user_registration_url, class: "btn-secondary" %>
+    <% end %>
+  </div>
 </div>
 
    <!-- code a Hero / Banner section -->
@@ -26,7 +37,8 @@
       <h1>Home Starter</h1>
       <p>Furnish your home without making a long-term committment </p>
 
-      <a class="btn-primary" href="#">Rent Now</a>
+      <%= link_to "Rent Now", new_user_session_url, class: "btn-primary" %>
+     <!--  <a class="btn-primary" href="#">Rent Now</a> -->
     </div>
   </div>
 
