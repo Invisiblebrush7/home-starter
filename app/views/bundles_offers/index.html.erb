@@ -1,1 +1,14 @@
 <h1> All Bundles </h1>
+
+<br>
+<%= link_to "New Bundle Offer", new_bundles_offer_url, class: "btn btn-primary"  %>
+<br>
+<br>
+
+<% @bundles.each do |bundle| %>
+  <h3> <%= bundle.name.capitalize %> </h3>
+  <p> <%= bundle.description.capitalize %> </p>
+  <%= link_to "See More", bundles_offer_url(bundle) %>
+  <br>
+  <br>
+<% end %>

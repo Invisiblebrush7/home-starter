@@ -13,10 +13,18 @@ class BundlesOffersController < ApplicationController
 
   def new
     @bundle = BundlesOffer.new
+    @user = current_user
   end
 
   def create
     @bundle = BundlesOffer.new(bundles_offer_params)
+    @bundle.user = current_user
+    params[:bundles_offer][:furnitures].each do |furniture_id|
+      if Furniture.exists?(furniture_id)
+        @bundle.furnitures.push(Furniture.find(furniture_id))
+      end
+    end
+
     if @bundle.save
       redirect_to bundles_offers_url
     else
@@ -47,7 +55,6 @@ class BundlesOffersController < ApplicationController
   private
 
   def bundles_offer_params
-    params.require(:BundlesOffer).permit(:name, :description, :price, :photo)
+    params.require(:bundles_offer).permit(:name, :description, :price, photos: [])
   end
-
 end
