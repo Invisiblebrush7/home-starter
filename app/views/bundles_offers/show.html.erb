@@ -5,9 +5,20 @@
 <% end %>
 
 <br>
+<br>
+<br>
+<h3>Furnitures</h3>
+<% @bundle.furnitures.each do |furniture| %>
+  <p> <%= furniture.name %> </p>
+<% end %>
+
 <h3>Description</h3>
 
 <p> <%= @bundle.description.capitalize %> </p>
 
 
 <%= link_to "Go back", bundles_offers_url, class: "btn btn-primary"  %>
+
+<br>
+<br>
+<br>

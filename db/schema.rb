@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 6666_66_66_666669) do
+ActiveRecord::Schema.define(version: 6666_66_66_666670) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 6666_66_66_666669) do
 
   create_table "bundled_furnitures", force: :cascade do |t|
     t.bigint "furniture_id", null: false
-    t.bigint "bundles_offers_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bundles_offers_id"], name: "index_bundled_furnitures_on_bundles_offers_id"
+    t.bigint "bundles_offer_id"
+    t.index ["bundles_offer_id"], name: "index_bundled_furnitures_on_bundles_offer_id"
     t.index ["furniture_id"], name: "index_bundled_furnitures_on_furniture_id"
   end
 
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 6666_66_66_666669) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "bundles_offers"
   add_foreign_key "bookings", "users"
-  add_foreign_key "bundled_furnitures", "bundles_offers", column: "bundles_offers_id"
+  add_foreign_key "bundled_furnitures", "bundles_offers"
   add_foreign_key "bundled_furnitures", "furnitures"
   add_foreign_key "bundles_offers", "users"
   add_foreign_key "furnitures", "users"
