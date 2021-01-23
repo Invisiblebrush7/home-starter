@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 6666_66_66_666666) do
+ActiveRecord::Schema.define(version: 6666_66_66_666669) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,9 @@ ActiveRecord::Schema.define(version: 6666_66_66_666666) do
     t.bigint "booking_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "bundles_offer_id", null: false
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["bundles_offer_id"], name: "index_reviews_on_bundles_offer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,6 +77,10 @@ ActiveRecord::Schema.define(version: 6666_66_66_666666) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "shipping_address"
+    t.integer "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -86,4 +92,5 @@ ActiveRecord::Schema.define(version: 6666_66_66_666666) do
   add_foreign_key "bundles_offers", "users"
   add_foreign_key "furnitures", "users"
   add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "bundles_offers"
 end
