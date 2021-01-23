@@ -85,7 +85,9 @@ ActiveRecord::Schema.define(version: 6666_66_66_666669) do
     t.bigint "booking_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "bundles_offer_id", null: false
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["bundles_offer_id"], name: "index_reviews_on_bundles_offer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,4 +114,5 @@ ActiveRecord::Schema.define(version: 6666_66_66_666669) do
   add_foreign_key "bundles_offers", "users"
   add_foreign_key "furnitures", "users"
   add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "bundles_offers"
 end
