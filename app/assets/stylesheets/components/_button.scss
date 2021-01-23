@@ -23,7 +23,14 @@
   text-align: center;
   font-size: 25px;
 }
-
+.go-back-button {
+  color: #d3d3d3;
+  margin-bottom: 17px;
+  display: inline-block;
+  &:hover {
+    color: #f4f4f4
+  }
+}
 // .btn-lesser {
 //   text-align: center;
 // }

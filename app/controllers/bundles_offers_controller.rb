@@ -28,7 +28,7 @@ class BundlesOffersController < ApplicationController
     if @bundle.save
       redirect_to bundles_offers_url
     else
-      render :new
+      redirect_to bundles_offers_url
     end
   end
 

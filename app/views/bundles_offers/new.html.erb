@@ -1,14 +1,19 @@
-<h1> New Bundle </h1>
+<div class="banner-new">
+  <div class="container">
+    <%= link_to "Go back", bundles_offers_url, class:"go-back-button" %>
+    <h1> New Bundle </h1>
 
 <h4> Hello <%= @user.first_name.capitalize %>, please will out this form</h4>
 
-<%= link_to "Go back", bundles_offers_url  %>
 
 <%= simple_form_for @bundle do |f| %>
-  <%= f.input :name, required: true %>
-  <%= f.input :description, required: true %>
-  <%= f.input :price, required: true %>
-  <%= f.input :photos, as: :file,input_html: { multiple: true },  required: true %>
+  <%= f.label :name %>
+  <%= f.input :name, input_html: { class: 'user-box' }, label: false%>
+  <%= f.label :description %>
+  <%= f.input :description, input_html: { class: 'user-box' }, label: false%>
+  <%= f.label :price %>
+  <%= f.input :price, input_html: { class: 'user-box' }, label: false%>
+  <%= f.input :photos, as: :file, input_html: { multiple: true, class: "add-file-btn" } %>
   <%= f.label :Furniture %>
   <br>
   <%= f.collection_check_boxes :furnitures, Furniture.where(user_id: @user.id), :id, :name %>
@@ -16,5 +21,5 @@
   <%= f.submit %>
 <% end %>
 
-
-
+  </div>
+</div>
