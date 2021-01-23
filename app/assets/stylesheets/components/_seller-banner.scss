@@ -1,0 +1,25 @@
+.seller-banner {
+  padding: 100px;
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url("sheets.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.seller-banner h1 {
+  color: $white;
+  text-align: center;
+}
+
+.index-font {
+  font-size: 30;
+}
+
+.btn-seller {
+  background: $tart-orange;
+  // display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+}
