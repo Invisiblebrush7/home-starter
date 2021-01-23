@@ -1,6 +1,7 @@
 class BundlesOffersController < ApplicationController
   def index
     @bundles = BundlesOffer.all
+    @user = current_user
   end
 
   def show
