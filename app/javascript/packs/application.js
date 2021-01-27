@@ -32,3 +32,8 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+const all_btn = document.getElementById("All");
+all_btn.addEventListener("click", (event)=> {
+    all_btn.classList.add("btn");
+    console.log("I was clicked");
+});

@@ -11,6 +11,7 @@
 <!-- Top Nav -->
 <div class="navbar">
   <%= image_tag "house-logo.png", class: "logo" %>
+  <a href="/">Home</a>
   <a href="#news">Contact</a>
   <a href="#contact">About</a>
 
@@ -31,8 +32,17 @@
 
 <div class="seller-banner">
 
-  <h1>Welcome back, <%= @user.first_name.capitalize %>!</h1>
+   <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+    <button id="All">All Offfers</button>
+    <button>My Offers</button>
+  </div>
 
+  <% if user_signed_in? %>
+    <h1>Welcome back, <%= @user.first_name.capitalize %>!</h1>
+  <% else %>
+    <h1>Hello there!</h1>
+  <% end %>
 <div class ="row">
   <div class="container col-2">
 <%= link_to "Create a New Bundle", new_bundles_offer_url, class: "btn-seller"  %>
@@ -40,8 +50,12 @@
  </div>
 <br>
 <br>
+<% if user_signed_in? && @user.user_type == "Seller" %>
+  <h2> See Your Existing Furniture Bundles </h2>
+<% else %>
+  <h2> See all our Furniture Offers </h2>
+<% end %>
 
-<h2> See Your Existing Furniture Bundles </h2>
 
 
 
