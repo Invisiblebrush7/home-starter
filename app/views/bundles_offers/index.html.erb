@@ -6,74 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Furniture Bundles</title>
     <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
+  </head>
+  <body>
+    <!-- Top Nav -->
+    <div class="navbar">
+      <%= image_tag "house-logo.png", class: "logo" %>
+      <a href="/">Home</a>
+      <a href="#news">Contact</a>
+      <a href="#contact">About</a>
 
+      <div class="signup-btn">
+        <% if !user_signed_in? %>
+        <%= link_to "Seller Log In", new_user_session_url, class: "margin-right-navbar" %>
+        <% end %>
 
-<!-- Top Nav -->
-<div class="navbar">
-  <%= image_tag "house-logo.png", class: "logo" %>
-  <a href="/">Home</a>
-  <a href="#news">Contact</a>
-  <a href="#contact">About</a>
+      <% if user_signed_in? %>
+        <%= link_to "Log Out", destroy_user_session_url, method: :delete  %>
+        <% else %>
+        <%= link_to "Sign Up as Seller", new_user_registration_url, class: "btn-secondary" %>
+        <% end %>
+      </div>
+    </div>
 
-  <div class="signup-btn">
-    <% if !user_signed_in? %>
-    <%= link_to "Seller Log In", new_user_session_url, class: "margin-right-navbar" %>
-    <% end %>
+    <!-- Rest of Page -->
 
-  <% if user_signed_in? %>
-    <%= link_to "Log Out", destroy_user_session_url, method: :delete  %>
-    <% else %>
-    <%= link_to "Sign Up as Seller", new_user_registration_url, class: "btn-secondary" %>
-    <% end %>
-  </div>
-</div>
+    <div class="seller-banner">
 
-<!-- Rest of Page -->
+      <% if user_signed_in? %>
+        <h1>Welcome back, <%= @user.first_name.capitalize %>!</h1>
+      <% else %>
+        <h1>Hello there!</h1>
+      <% end %>
 
-<div class="seller-banner">
-
-   <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-    <button id="All">All Offfers</button>
-    <button>My Offers</button>
-  </div>
-
-  <% if user_signed_in? %>
-    <h1>Welcome back, <%= @user.first_name.capitalize %>!</h1>
-  <% else %>
-    <h1>Hello there!</h1>
-  <% end %>
-<div class ="row">
-  <div class="container col-2">
-<%= link_to "Create a New Bundle", new_bundles_offer_url, class: "btn-seller"  %>
-  </div>
- </div>
-<br>
-<br>
-<% if user_signed_in? && @user.user_type == "Seller" %>
-  <h2> See Your Existing Furniture Bundles </h2>
-<% else %>
-  <h2> See all our Furniture Offers </h2>
-<% end %>
-
-
-
-
-<% @bundles.each do |bundle| %>
-  <div class="bundle-cards">
       <div class ="row">
-        <div class="container m-2">
-          <h3> <%= bundle.name.capitalize %> </h3>
-          <%= link_to "View", bundles_offer_url(bundle) %>
-          <p> <%= bundle.description.capitalize %> </p>
-  </div>
-  </div>
-   </div>
-<% end %>
-</div>
+        <div class="container col-2">
+          <%= link_to "Create a New Bundle", new_bundles_offer_url, class: "btn-seller"  %>
+        </div>
+      </div>
 
+      <br>
+      <br>
+      <% if user_signed_in? && @user.user_type == "Seller" %>
+        <div class="tab">
+          <button id="default" class="tablink All"> All Offers </button>
+          <button class="tablink MyOffers "> My Offers </button>
+        </div>
 
+        <div id="All" class="tabcontent">
+          <h2> See all our Furniture Offers </h2>
+          <% @bundles.each do |bundle| %>
+            <div class="bundle-cards">
+              <div class ="row">
+                <div class="container m-2">
+                  <h3> <%= bundle.name.capitalize %> </h3>
+                  <%= link_to "View", bundles_offer_url(bundle) %>
+                  <p> <%= bundle.description.capitalize %> </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
 
+        <div id="MyOffers" class="tabcontent">
+          <h2> See Your Existing Furniture Bundles </h2>
+          <% @bundles_user.each do |bundle| %>
+            <div class="bundle-cards">
+              <div class ="row">
+                <div class="container m-2">
+                  <h3> <%= bundle.name.capitalize %> </h3>
+                  <%= link_to "View", bundles_offer_url(bundle) %>
+                  <p> <%= bundle.description.capitalize %> </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      <% else %>
+        <h2> See Your Existing Furniture Bundles </h2>
+        <% @bundles.each do |bundle| %>
+          <div class="bundle-cards">
+            <div class ="row">
+              <div class="container m-2">
+                <h3> <%= bundle.name.capitalize %> </h3>
+                <%= link_to "View", bundles_offer_url(bundle) %>
+                <p> <%= bundle.description.capitalize %> </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
   </body>
 </html>
 

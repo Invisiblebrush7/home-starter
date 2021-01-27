@@ -2,14 +2,13 @@ class BundlesOffersController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
+    @bundles = BundlesOffer.all
     if (user_signed_in? && current_user.user_type == "Renter") || !user_signed_in?
-      @bundles = BundlesOffer.all
       @user = current_user
     elsif user_signed_in? && current_user.user_type == "Seller"
       @user = current_user
-      @bundles = BundlesOffer.where("user_id = #{@user.id}")
+      @bundles_user = BundlesOffer.where("user_id = #{@user.id}")
     end
-
   end
 
   def show

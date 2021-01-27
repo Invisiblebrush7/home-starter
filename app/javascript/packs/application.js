@@ -31,9 +31,28 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  openTab();
 });
-const all_btn = document.getElementById("All");
-all_btn.addEventListener("click", (event)=> {
-    all_btn.classList.add("btn");
-    console.log("I was clicked");
-});
+
+function openTab() {
+  document.querySelectorAll(".tablink").forEach((tablink) => {
+    tablink.addEventListener("click", (event) => {
+      document.querySelectorAll(".tablink").forEach((i) => {
+        i.classList.remove("active");
+      });
+      document.querySelectorAll(".tabcontent").forEach((tabcontent) => {
+        tabcontent.style.display = "none";
+      });
+      event.currentTarget.classList.add ("active");
+      document.getElementById(event.currentTarget.classList[1]).style.display = "block";
+    })
+  });
+  document.querySelector("#default").click();
+};
+
+
+
+
+
+
+
