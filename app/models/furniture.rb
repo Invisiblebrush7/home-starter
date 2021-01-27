@@ -1,6 +1,7 @@
 class Furniture < ApplicationRecord
   belongs_to :user
   has_many :bundled_furnitures
+  has_many_attached :photos
   has_many :bundles_offer, through: :bundled_furnitures
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :description, presence: true, length: { maximum: 200,
