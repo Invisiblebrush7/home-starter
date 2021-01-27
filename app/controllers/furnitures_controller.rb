@@ -1,6 +1,7 @@
 class FurnituresController < ApplicationController
   def index
     @furnitures = Furniture.all
+    @user = current_user
   end
 
   def show

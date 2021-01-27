@@ -1,2 +1,4 @@
-<h1>Furnitures#index</h1>
-<p>Find me in app/views/furnitures/index.html.erb</p>
+<h1>Furnitures</h1>
+<% @furnitures.each do |furniture| %>
+  <%= furniture.name %>
+<% end %>
