@@ -21,6 +21,8 @@
   <div class="signup-btn">
     <% if !user_signed_in? %>
     <%= link_to "Seller Log In", new_user_session_url, class: "margin-right-navbar" %>
+    <% else %>
+    <%= link_to "Manage Account", bundles_offers_url, class: "btn-secondary margin-right-navbar" %>
     <% end %>
 
   <% if user_signed_in? %>
