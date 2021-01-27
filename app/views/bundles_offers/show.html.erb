@@ -5,6 +5,8 @@
 <div class="container"> 
 <% @bundle.furnitures.each do |furniture| %>
   <p> <%= furniture.name %> </p>
+  <p> <%= furniture.dimensions %> </p>
+  <p> <%= furniture.condition %> </p>
 <% end %>
 <% @bundle.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
