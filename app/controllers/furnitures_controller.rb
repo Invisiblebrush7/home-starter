@@ -1,6 +1,7 @@
 class FurnituresController < ApplicationController
   def index
     @furnitures = Furniture.all
+    @user = current_user
   end
 
   def show
@@ -13,7 +14,8 @@ class FurnituresController < ApplicationController
 
   def create
     @furniture = Furniture.new(furniture_params)
-    if @furniture.save
+    @furniture.user = current_user
+    if @furniture.save!
       redirect_to furniture_path(@furniture)
     else
       render 'new'
@@ -39,7 +41,7 @@ class FurnituresController < ApplicationController
   private
 
   def furniture_params
-    params.require(:furniture).permit(:name, :description, :dimensions, :price, :condition, :photo)
+    params.require(:furniture).permit(:name, :description, :dimensions, :price, :condition, photos: [])
   end
 
 end
