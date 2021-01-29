@@ -19,13 +19,14 @@
 
   <div class="signup-btn">
     <% if !user_signed_in? %>
-    <%= link_to "Seller Log In", new_user_session_url, class: "margin-right-navbar" %>
+    <%= link_to "Log In", new_user_session_url, class: "margin-right-navbar" %>
+    <%= link_to "Sign Up", new_user_registration_url, class: "btn-secondary" %>
     <% end %>
 
   <% if user_signed_in? %>
-    <%= link_to "Log Out", destroy_user_session_url, method: :delete  %>
+    <%= link_to "Log Out", destroy_user_session_url, method: :delete, class: "margin-right-navbar" %>
+    <%= link_to "Manage Account", bundles_offers_url, class: "btn-secondary" %>
     <% else %>
-    <%= link_to "Sign Up as Seller", new_user_registration_url, class: "btn-secondary" %>
     <% end %>
   </div>
 </div>
@@ -50,8 +51,10 @@
   <!-- How It Works Section -->
   <div class="container row-styles">
     <br>
+    <br>
 
     <h2>How it works</h2>
+    <br>
       <div class="row">
         <div class="cards">
           <div class="card img1 col-md-4 m-2">

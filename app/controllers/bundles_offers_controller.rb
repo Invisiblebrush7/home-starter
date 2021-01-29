@@ -61,6 +61,6 @@ class BundlesOffersController < ApplicationController
   private
 
   def bundles_offer_params
-    params.require(:bundles_offer).permit(:name, :description, :price, photos: [])
+    params.require(:bundles_offer).permit(:name, :description, :price, :furnitures, photos: [])
   end
 end
