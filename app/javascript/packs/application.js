@@ -51,8 +51,7 @@ function openTab() {
 };
 
 
-
-
-
+var elem = document.querySelector('see-bundles-header');
+elem.remove();
 
 

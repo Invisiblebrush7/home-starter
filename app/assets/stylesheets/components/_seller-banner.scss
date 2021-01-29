@@ -1,5 +1,5 @@
 .seller-banner {
-  padding: 100px;
+  padding: 200px;
   background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url("sheets.jpg");
   background-size: cover;
   background-position: center;
@@ -12,14 +12,4 @@
 
 .index-font {
   font-size: 30;
-}
-
-.btn-seller {
-  background: $purple;
-  // display: inline-block;
-  padding: 10px 20px;
-  color: white;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
 }
