@@ -31,13 +31,13 @@
 <!-- Rest of Page -->
 
 <div class="seller-banner">
-  
+
   <% if user_signed_in? %>
       <h1>Welcome back, <%= @user.first_name.capitalize %>!</h1>
     <% else %>
       <h1>Hello there!</h1>
     <% end %>
-  
+
 
 <div class ="row">
   <div class="container col-2">
@@ -86,7 +86,7 @@
             <% end %>
         </div>
         </div>
-        
+
 
     <% else %>
       <h2> See All Bundles </h2>
@@ -131,8 +131,6 @@
         </a>
       </center>
     </div>
-
-  </head>
 
   </body>
 </html>

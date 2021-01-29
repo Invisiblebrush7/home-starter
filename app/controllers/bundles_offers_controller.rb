@@ -3,7 +3,7 @@ class BundlesOffersController < ApplicationController
 
   def index
     @bundles = BundlesOffer.all
-    if (user_signed_in? && current_user.user_type == "Renter") || !user_signed_in?
+    if user_signed_in? && current_user.user_type == "Renter"
       @user = current_user
     elsif user_signed_in? && current_user.user_type == "Seller"
       @user = current_user
