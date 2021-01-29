@@ -30,50 +30,13 @@
     <br>
 
     <% if user_signed_in? && @user.user_type == "Seller" %>
-      <div class="tab">
-        <button id="default" class="tablink All"> All Offers </button>
-        <button class="tablink MyOffers "> My Offers </button>
-      </div>
+    <div class="tab">
+      <button id="default" class="tablink All"> All Offers </button>
+      <button class="tablink MyOffers "> My Offers </button>
+    </div>
 
-      <div id="All" class="tabcontent">
-        <h2> See all our Furniture Offers </h2>
-        <div class="bundle-cards">
-          <% @bundles_user.each do |bundle| %>
-            <div class="bundle-card">
-              <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
-              <div class= "bundle-card-footer">
-                <h4> <%= bundle.name.capitalize %> </h4>
-                <div class="description">
-                  <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
-                  <p> $<%= bundle.price %> </p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
-        <div id="MyOffers" class="tabcontent">
-          <h2> See Your Existing Furniture Bundles </h2>
-          <div class="bundle-cards">
-            <% @bundles_user.each do |bundle| %>
-            <div class="bundle-card">
-              <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
-              <div class= "bundle-card-footer">
-                <h4> <%= bundle.name.capitalize %> </h4>
-                <div class="description">
-                  <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
-                  <p> $<%= bundle.price %> </p>
-                </div>
-              </div>
-            </div>
-            <% end %>
-          </div>
-        </div>
-
-      <% else %>
-
-      <h2> See All Bundles </h2>
+    <div id="All" class="tabcontent">
+      <h2> See all our Furniture Offers </h2>
       <div class="bundle-cards">
         <% @bundles.each do |bundle| %>
         <div class="bundle-card">
@@ -88,35 +51,50 @@
         </div>
         <% end %>
       </div>
-      <% end %> <!-- If end -->
-      <% if @bundles.count == 0 %>
-        <h3> We have no Bundles right now </h3>
-        <h4> Try adding one! </h4>
+    </div>
+
+    <div id="MyOffers" class="tabcontent">
+      <h2> See Your Existing Furniture Bundles </h2>
+      <div class="bundle-cards">
+        <% @bundles_user.each do |bundle| %>
+        <div class="bundle-card">
+          <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
+          <div class= "bundle-card-footer">
+            <h4> <%= bundle.name.capitalize %> </h4>
+            <div class="description">
+              <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
+              <p> $<%= bundle.price %> </p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% else %>
+
+    <h2> See All Bundles </h2>
+    <div class="bundle-cards">
+      <% @bundles.each do |bundle| %>
+      <div class="bundle-card">
+        <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
+        <div class= "bundle-card-footer">
+          <h4> <%= bundle.name.capitalize %> </h4>
+          <div class="description">
+            <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
+            <p> $<%= bundle.price %> </p>
+          </div>
+        </div>
+      </div>
       <% end %>
+    </div>
+    <% end %> <!-- If end -->
+    <% if @bundles.count == 0 %>
+    <h3> We have no Bundles right now </h3>
+    <h4> Try adding one! </h4>
+    <% end %>
   </div>
 
 
-
-
-      <!-- code a footer -->
-      <div class="footer">
-        <p><center>Follow Us</center></p>
-        <div class="links">
-          <a href="#">
-            <i class="fab fa-facebook"></i>
-          </a>
-          <a href="#">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="#">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-
-
-    </body>
-    </html>
+</body>
+</html>
