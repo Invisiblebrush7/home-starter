@@ -10,15 +10,10 @@
 
 .bundle-card {
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: flex-end;
   justify-content: space-around;
   font-size: 22px;
   color: $light-sea-grass;
   font-weight: bolder;
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("bedroom.jpg");
-  background-size: cover;
-  background-position: center;
   border-radius: 10px;
   height: 300px;
   width: 100%;
@@ -30,7 +25,7 @@
   justify-content: space-between;
   padding: 10px;
   width: 100%;
-  border-radius: 0px 0px 10px 10px;
+  // border-radius: 0px 0px 10px 10px;
 }
 
 .view {
