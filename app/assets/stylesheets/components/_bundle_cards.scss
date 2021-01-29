@@ -33,16 +33,8 @@
   font-size: 12px;
 }
 
-@media(max-width: 992px) {
-  .bundle-cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media(max-width: 768px) {
-  .bundle-cards {
-    grid-template-columns: 1fr;
-  }
+.font {
+  color: white;
 }
 
 

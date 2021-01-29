@@ -26,8 +26,9 @@
       <button id="default" class="tablink All"> All Offers </button>
       <button class="tablink MyOffers "> My Offers </button>
     </div>
+
     <div id="All" class="tabcontent">
-      <h2> See all our Furniture Offers </h2>
+      <h2> Browse All Furniture Sets </h2>
       <div class="bundle-cards">
         <% @bundles.each do |bundle| %>
         <div class="bundle-card">
@@ -43,8 +44,9 @@
         <% end %>
       </div>
     </div>
+
     <div id="MyOffers" class="tabcontent">
-      <h2> See Your Existing Furniture Bundles </h2>
+      <h2> Your Furniture Sets Available for Rent </h2>
       <div class="bundle-cards">
         <% @bundles_user.each do |bundle| %>
         <div class="bundle-card">
@@ -61,6 +63,8 @@
       </div>
     </div>
     <% else %>
+
+    <% if @bundles.count > 0 %>
     <h2> See All Bundles </h2>
     <div class="bundle-cards">
       <% @bundles.each do |bundle| %>
@@ -75,12 +79,14 @@
         </div>
       </div>
       <% end %>
+      <% else %>
+      <h3> <center> All furniture sets are rented out at the moment. </center></h3>
+      <p> <center> Lease some furniture or check back in a couple hours </center></p>
     </div>
-    <% end %> <!-- If end -->
-    <% if @bundles.count == 0 %>
-    <h3> We have no Bundles right now </h3>
-    <h4> Try adding one! </h4>
     <% end %>
+    <% end %>
+
   </div>
+</div>
 </body>
 </html>
