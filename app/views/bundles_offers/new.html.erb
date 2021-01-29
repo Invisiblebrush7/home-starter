@@ -1,24 +1,4 @@
-<!-- Top Nav -->
-<div class="navbar">
-  <a class="navbar-brand" href="/">
-  <%= image_tag "house-logo.png", class: "logo" %>
-  </a>
-  <a href="#news">Contact</a>
-  <a href="#contact">About</a>
 
-  <div class="signup-btn">
-    <% if !user_signed_in? %>
-    <%= link_to "Seller Log In", new_user_session_url, class: "margin-right-navbar" %>
-    <% end %>
-
-  <% if user_signed_in? %>
-    <%= link_to "Log Out", destroy_user_session_url, method: :delete  %>
-    <% else %>
-    <%= link_to "Sign Up as Seller", new_user_registration_url, class: "btn-secondary" %>
-    <% end %>
-  </div>
-</div>
-</div>
 
 <!-- Form -->
 
@@ -28,48 +8,29 @@
       <%= link_to "Go back", bundles_offers_url, class:"go-back-button" %>
       <h1> Rent Out Furniture Simply </h1>
 
-<p> Bundle furniture pieces you want to sell together and tell renters the essential details.
-<strong> Remember to attach a picture that they'll love. </strong></p>
+      <p> Bundle furniture pieces you want to sell together and tell renters the essential details.
+        <strong> Remember to attach a picture that they'll love. </strong></p>
 
-<div class="form-inputs">
-<%= simple_form_for @bundle do |f| %>
-  <%= f.label :name %>
-  <%= f.input :name, input_html: { class: 'user-box' }, label: false%>
-  <%= f.label :description %>
-  <%= f.input :description, input_html: { class: 'user-box' }, label: false%>
-  <%= f.label :price %>
-  <%= f.input :price, input_html: { class: 'user-box' }, label: false%>
-  <%= f.input :photos, as: :file, input_html: { multiple: true, class: "add-file-btn" } %>
-  <%= f.label :Furniture %>
-  <br>
-  <%= f.collection_check_boxes :furnitures, Furniture.where(user_id: @user.id), :id, :name %>
-  <%= f.button :submit, "Lease it", class: "btn-last" %>
-  <br>
-  </div>
-<% end %>
-  </div>
-</div>
-</div>
-</div>
-
-<!-- code a footer -->
-  <div class="footer">
-    <p><center><br><br><br><br><br><br><br><br><br>Follow Us</center></p>
-    <div class="links">
-        <a href="#"><center>
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-instagram"></i>
-        </a>
-      </center>
+        <div class="form-inputs">
+          <%= simple_form_for @bundle do |f| %>
+          <%= f.label :name %>
+          <%= f.input :name, input_html: { class: 'user-box' }, label: false%>
+          <%= f.label :description %>
+          <%= f.input :description, input_html: { class: 'user-box' }, label: false%>
+          <%= f.label :price %>
+          <%= f.input :price, input_html: { class: 'user-box' }, label: false%>
+          <%= f.input :photos, as: :file, input_html: { multiple: true, class: "add-file-btn" } %>
+          <%= f.label :Furniture %>
+          <br>
+          <%= f.collection_check_boxes :furnitures, Furniture.where(user_id: @user.id), :id, :name %>
+          <%= f.button :submit, "Lease it", class: "btn-last" %>
+          <br>
+        </div>
+        <% end %>
+      </div>
     </div>
+  </div>
+
 </body>
 </html>
 

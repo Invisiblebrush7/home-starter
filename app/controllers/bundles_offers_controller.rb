@@ -1,5 +1,5 @@
 class BundlesOffersController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @bundles = BundlesOffer.all
@@ -32,9 +32,7 @@ class BundlesOffersController < ApplicationController
         @bundle.furnitures.push(Furniture.find(furniture_id))
       end
     end
-    if @bundle.save
-      @bundle.user.update_attribute(:user_type, "Seller")
-    end
+    @bundle.user.update_attribute(:user_type, "Seller") if @bundle.save
     redirect_to bundles_offers_url
   end
 
