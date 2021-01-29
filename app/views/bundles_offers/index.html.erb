@@ -30,25 +30,6 @@
 
     <!-- Rest of Page -->
 
-<!-- Top Nav -->
-<div class="navbar">
-  <%= image_tag "house-logo.png", class: "logo" %>
-  <a href="#news">Contact</a>
-  <a href="#contact">About</a>
-
-  <div class="signup-btn">
-    <% if !user_signed_in? %>
-    <%= link_to "Seller Log In", new_user_session_url, class: "margin-right-navbar" %>
-    <% end %>
-
-  <% if user_signed_in? %>
-    <%= link_to "Log Out", destroy_user_session_url, method: :delete  %>
-    <% else %>
-    <%= link_to "Sign Up as Seller", new_user_registration_url, class: "btn-secondary" %>
-    <% end %>
-  </div>
-</div>
-
 <!-- Rest of Page -->
 
   <div class="seller-banner">
@@ -67,7 +48,7 @@
 
     <br>
     <br>
-    
+
     <% if user_signed_in? && @user.user_type == "Seller" %>
       <div class="tab">
         <button id="default" class="tablink All"> All Offers </button>
@@ -109,7 +90,7 @@
       </div>
 
     <% else %>
-      <h2> See Your Existing Furniture Bundles </h2>
+      <h2> See All Bundles </h2>
       <div class="bundle-cards">
       <% @bundles.each do |bundle| %>
         <div class="bundle-card">
@@ -121,6 +102,10 @@
               </div>
             </div>
         </div>
+      <% end %>
+      <% if @bundles.count == 0 %>
+        <h3> We have no Bundles right now : ( </h3>
+        <h4> Try adding one! </h4>
       <% end %>
       </div>
     <% end %>
@@ -134,16 +119,3 @@
     </div>
   </body>
 </html>
-
-
-
-
-
- <!-- No Bootstrap -->
-
-    <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-
