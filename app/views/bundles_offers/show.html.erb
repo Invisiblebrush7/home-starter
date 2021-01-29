@@ -1,18 +1,55 @@
-<div class="container show"> 
-<h3> <%= @bundle.name.capitalize %> </h1>
-<p> <%= @bundle.description %> </p>
+<!-- Top Nav -->
+<div class="navbar">
+  <%= image_tag "house-logo.png", class: "logo" %>
+  <a href="#news">Contact</a>
+  <a href="#contact">About</a>
+
+  <div class="signup-btn">
+    <% if !user_signed_in? %>
+    <%= link_to "Log In", new_user_session_url, class: "margin-right-navbar" %>
+    <%= link_to "Sign Up", new_user_registration_url, class: "btn-secondary" %>
+    <% end %>
+
+  <% if user_signed_in? %>
+    <%= link_to "Log Out", destroy_user_session_url, method: :delete, class: "margin-right-navbar" %>
+    <%= link_to "Manage Account", bundles_offers_url, class: "btn-secondary" %>
+    <% else %>
+    <% end %>
+  </div>
 </div>
-<div class="container"> 
-<% @bundle.furnitures.each do |furniture| %>
-  <p> <%= furniture.name %> </p>
-  <p> <%= furniture.dimensions %> </p>
-  <p> <%= furniture.condition %> </p>
-<% end %>
-<% @bundle.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+
+<!-- Display -->
+
+<div class="show-container">
+  <div class="show-image">
+    <%= link_to "Go back", bundles_offers_url, class:"go-back-button" %>
+    <br>
+    <% @bundle.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+
+  </div>
+
+
+    <div class="show-text">
+      <h2> <%= @bundle.name.capitalize %> </h2>
+      <h3> $<%= @bundle.price %> </h3>
+      <p> <%= @bundle.description %> </p>
+
+      <% @bundle.furnitures.each do |furniture| %>
+       <p> <%= furniture.name %> </p>
+      <% end %>
+
+      <%= link_to "Rent Furniture", bundles_offers_url, class: "btn btn-secondary"  %>
+      <br><br>
+      <h4> Arrives in 2-5 weeks if you order today</h4>
+
+
+    </div>
 </div>
-<br>
-<div class="container"> 
-<%= link_to "back", bundles_offers_url, class: "btn btn-primary"  %>
-</div>
+
+
+
+
+
+

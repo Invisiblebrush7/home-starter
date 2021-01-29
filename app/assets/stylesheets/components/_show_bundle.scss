@@ -1,7 +1,33 @@
-.show h3 {
+.show-container{
+  display: flex;
+  justify-content: space-around;
+  padding-left: 100px;
+  padding-right: 200px;
+}
+
+.show-image {
+  margin: 50px;
+  padding: 50px;
+}
+
+.show-text {
+  margin: 50px;
+  padding: 50px;
+}
+
+.show-text h2 {
+  color: $light-sea-grass;
+}
+
+.show-text h3 {
   color: black;
 }
 
-.show p {
+.show-text p {
   color: black;
+}
+
+.show-text h4 {
+  color: gray;
+  font-size: 12px;
 }

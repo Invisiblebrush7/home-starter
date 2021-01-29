@@ -35,7 +35,7 @@
 
 <div class ="row">
   <div class="container col-2">
-<%= link_to "Create a New Bundle", new_bundles_offer_url, class: "btn-seller"  %>
+<%= link_to "Sell Your Furniture", new_bundles_offer_url, class: "btn-seller"  %>
   </div>
  </div>
 <br>
@@ -44,19 +44,22 @@
 <h2> See Your Existing Furniture Bundles </h2>
 
 
-
+<div class="bundle-cards">
 <% @bundles.each do |bundle| %>
-  <div class="bundle-cards">
-      <div class ="row">
-        <div class="container m-2">
-          <h3> <%= bundle.name.capitalize %> </h3>
-          <%= link_to "View", bundles_offer_url(bundle) %>
-          <p> <%= bundle.description.capitalize %> </p>
+  <div class="bundle-card">
+      <div class= "bundle-card-footer">
+        <h4> <%= bundle.name.capitalize %> </h4>
+        <div class="description">
+          <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
+          <p> $<%= bundle.price %> </p>
+        </div>
+      </div>
   </div>
-  </div>
-   </div>
 <% end %>
 </div>
+
+  </body>
+</html>
 
 
 
