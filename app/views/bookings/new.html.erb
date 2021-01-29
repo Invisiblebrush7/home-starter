@@ -14,5 +14,7 @@
   <br>
   <%= f.collection_check_boxes :shipping_method, [['Delivered', 'Delivered'], ['Picked Up', 'Picked Up']], :first, :last %>
   <%= f.text_field :start_date, data:{ provide:'datepicker' } %>
+  <br>
+  <%= f.submit %>
   <!-- https://stackoverflow.com/questions/30522655/how-to-use-date-picker-with-form-for-in-rails -->
 <% end %>
