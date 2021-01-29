@@ -1,0 +1,18 @@
+2021-01-26 19:23:29.546 CST [3822] LOG:  starting PostgreSQL 13.1 on x86_64-apple-darwin19.6.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.27), 64-bit
+2021-01-26 19:23:29.547 CST [3822] LOG:  listening on IPv6 address "::1", port 5432
+2021-01-26 19:23:29.547 CST [3822] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-26 19:23:29.639 CST [3822] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-26 19:23:29.722 CST [3823] LOG:  database system was shut down at 2021-01-26 19:23:27 CST
+2021-01-26 19:23:29.768 CST [3822] LOG:  database system is ready to accept connections
+2021-01-26 19:23:51.181 CST [3867] FATAL:  database "home_starter_development" does not exist
+2021-01-26 19:24:06.431 CST [3905] FATAL:  database "home_starter_development" does not exist
+2021-01-26 19:41:16.588 CST [4100] ERROR:  cached plan must not change result type
+2021-01-26 19:41:16.588 CST [4100] STATEMENT:  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2
+2021-01-26 20:12:30.918 CST [5606] ERROR:  column "type" of relation "users" already exists
+2021-01-26 20:12:30.918 CST [5606] STATEMENT:  ALTER TABLE "users" ADD "type" character varying DEFAULT 'Renter'
+2021-01-26 20:14:20.988 CST [5803] ERROR:  database "home_starter_development" is being accessed by other users
+2021-01-26 20:14:20.988 CST [5803] DETAIL:  There is 1 other session using the database.
+2021-01-26 20:14:20.988 CST [5803] STATEMENT:  DROP DATABASE IF EXISTS "home_starter_development"
+2021-01-26 20:51:02.066 CST [8732] ERROR:  operator does not exist: bigint == integer at character 64
+2021-01-26 20:51:02.066 CST [8732] HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+2021-01-26 20:51:02.066 CST [8732] STATEMENT:  SELECT "bundles_offers".* FROM "bundles_offers" WHERE (user_id == 1)

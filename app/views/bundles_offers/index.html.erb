@@ -7,7 +7,6 @@
     <title>Furniture Bundles</title>
     <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
 
-
 <!-- Top Nav -->
 <div class="navbar">
   <a class="navbar-brand" href="/">
@@ -32,8 +31,13 @@
 <!-- Rest of Page -->
 
 <div class="seller-banner">
-
-  <h1>Welcome back, <%= @user.first_name.capitalize %>!</h1>
+  
+  <% if user_signed_in? %>
+      <h1>Welcome back, <%= @user.first_name.capitalize %>!</h1>
+    <% else %>
+      <h1>Hello there!</h1>
+    <% end %>
+  
 
 <div class ="row">
   <div class="container col-2">
@@ -43,24 +47,71 @@
 <br>
 <br>
 
-<h2> See Your Existing Furniture Bundles </h2>
-
-
-<div class="bundle-cards">
-<% @bundles.each do |bundle| %>
-  <div class="bundle-card">
-      <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
-      <div class= "bundle-card-footer">
-        <h4> <%= bundle.name.capitalize %> </h4>
-        <div class="description">
-          <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
-          <p> $<%= bundle.price %> </p>
-        </div>
+ <% if user_signed_in? && @user.user_type == "Seller" %>
+      <div class="tab">
+        <button id="default" class="tablink All"> All Offers </button>
+        <button class="tablink MyOffers "> My Offers </button>
       </div>
-  </div>
-<% end %>
-</div>
-</div>
+
+      <div id="All" class="tabcontent">
+        <h2> See all our Furniture Offers </h2>
+           <div class="bundle-cards">
+            <% @bundles_user.each do |bundle| %>
+              <div class="bundle-card">
+                  <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
+                  <div class= "bundle-card-footer">
+                    <h4> <%= bundle.name.capitalize %> </h4>
+                    <div class="description">
+                      <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
+                      <p> $<%= bundle.price %> </p>
+                    </div>
+                  </div>
+        </div>
+            <% end %>
+
+      <div id="MyOffers" class="tabcontent">
+        <h2> See Your Existing Furniture Bundles </h2>
+            <div class="bundle-cards">
+            <% @bundles_user.each do |bundle| %>
+              <div class="bundle-card">
+                  <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
+                  <div class= "bundle-card-footer">
+                    <h4> <%= bundle.name.capitalize %> </h4>
+                    <div class="description">
+                      <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
+                      <p> $<%= bundle.price %> </p>
+                    </div>
+                  </div>
+        </div>
+            <% end %>
+        </div>
+        </div>
+        
+
+    <% else %>
+      <h2> See All Bundles </h2>
+          <div class="bundle-cards">
+            <% @bundles.each do |bundle| %>
+              <div class="bundle-card">
+                  <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
+                  <div class= "bundle-card-footer">
+                    <h4> <%= bundle.name.capitalize %> </h4>
+                    <div class="description">
+                      <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
+                      <p> $<%= bundle.price %> </p>
+                    </div>
+                  </div>
+        </div>
+            <% end %>
+      <% end %>
+      <% if @bundles.count == 0 %>
+        <h3> We have no Bundles right now : ( </h3>
+        <h4> Try adding one! </h4>
+      <% end %>
+      </div>
+    <% end %>
+
+
 
 <!-- code a footer -->
   <div class="footer">
@@ -81,9 +132,7 @@
       </center>
     </div>
 
-    <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
-    <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
 
+  </body>
+</html>

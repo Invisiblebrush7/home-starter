@@ -1,7 +1,14 @@
 class BundlesOffersController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
+
   def index
     @bundles = BundlesOffer.all
-    @user = current_user
+    if (user_signed_in? && current_user.user_type == "Renter") || !user_signed_in?
+      @user = current_user
+    elsif user_signed_in? && current_user.user_type == "Seller"
+      @user = current_user
+      @bundles_user = BundlesOffer.where("user_id = #{@user.id}")
+    end
   end
 
   def show
@@ -25,12 +32,10 @@ class BundlesOffersController < ApplicationController
         @bundle.furnitures.push(Furniture.find(furniture_id))
       end
     end
-
     if @bundle.save
-      redirect_to bundles_offers_url
-    else
-      redirect_to bundles_offers_url
+      @bundle.user.update_attribute(:user_type, "Seller")
     end
+    redirect_to bundles_offers_url
   end
 
   def edit
@@ -56,6 +61,6 @@ class BundlesOffersController < ApplicationController
   private
 
   def bundles_offer_params
-    params.require(:bundles_offer).permit(:name, :description, :price, photos: [])
+    params.require(:bundles_offer).permit(:name, :description, :price, :furnitures, photos: [])
   end
 end
