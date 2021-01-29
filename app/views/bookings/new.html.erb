@@ -12,8 +12,9 @@
 <%= simple_form_for @booking, url: bundles_offer_bookings_url do |f| %>
   <%= f.label :shipping_method, label: "Select your shipping method:" %>
   <br>
-  <%= f.collection_check_boxes :shipping_method, [['Delivered', 'Delivered'], ['Picked Up', 'Picked Up']], :first, :last %>
-  <%= f.text_field :start_date, data:{ provide:'datepicker' } %>
+  <%= f.collection_radio_buttons :shipping_method, [['Delivered', 'Delivered'], ['Picked Up', 'Picked Up']], :first, :last %>
+  <%= f.text_field :start_date, data:{ provide:'datepicker' }, class: 'datepicker' %>
+  <%= f.text_field :end_date, data:{ provide:'datepicker' }, class: 'datepickerEnd' %>
   <br>
   <%= f.submit %>
   <!-- https://stackoverflow.com/questions/30522655/how-to-use-date-picker-with-form-for-in-rails -->

@@ -7,7 +7,9 @@
 <p> <%= @bundle.description %> </p>
 
 
-
+<% @bookings.each do |booking|  %>
+  <h3> Shipping Method: <%= booking.shipping_method %> </h3>
+<% end %>
 <br>
 <br>
 <br>

@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+import "bootstrap-datepicker"
 //= require bootstrap-datepicker
 
 
@@ -32,5 +33,34 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  $('.datepicker').datepicker();
+  // https://bootstrap-datepicker.readthedocs.io/en/latest/options.html
+  // https://anrg9.wordpress.com/
+  $('.datepicker').datepicker({
+    autoclose: true,
+    startDate: getDate()
+  });
+  $('.datepickerEnd').datepicker({
+    autoclose: true,
+    startDate: getDateEnd()
+  });
+
 });
+
+function getDate(){
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+};
+function getDateEnd(){
+  var today = new Date();
+  var dd = String(today.getDate() + 1).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+};
