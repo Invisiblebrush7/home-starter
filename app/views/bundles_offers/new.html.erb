@@ -11,13 +11,13 @@
       <p> Bundle furniture pieces you want to sell together and tell renters the essential details.
         <strong> Remember to attach a picture that they'll love. </strong></p>
 
-        <div class="form-inputs">
+        <div class="form-inputs-1">
           <%= simple_form_for @bundle do |f| %>
           <%= f.label :name %>
           <%= f.input :name, input_html: { class: 'user-box' }, label: false%>
           <%= f.label :description %>
           <%= f.input :description, input_html: { class: 'user-box' }, label: false%>
-          <%= f.label :price %>
+          <%= f.label :price, label: "Price Per Month" %>
           <%= f.input :price, input_html: { class: 'user-box' }, label: false%>
           <%= f.input :photos, as: :file, input_html: { multiple: true, class: "add-file-btn" } %>
           <br>
