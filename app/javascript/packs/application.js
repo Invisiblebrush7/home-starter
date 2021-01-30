@@ -35,6 +35,9 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   // https://bootstrap-datepicker.readthedocs.io/en/latest/options.html
   // https://anrg9.wordpress.com/
+  // let dates = [];
+  // when user chooses dates, add to dates[]
+
   $('.datepicker').datepicker({
     autoclose: true,
     startDate: getDate()
