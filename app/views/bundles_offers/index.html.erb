@@ -29,6 +29,10 @@
 
     <div id="All" class="tabcontent">
       <h2> Browse All Furniture Sets </h2>
+      <% if @bundles.count.zero? %>
+        <h3> <center> All furniture sets are rented out at the moment. </center></h3>
+        <p> <center> Lease some furniture or check back in a couple hours </center></p>
+      <% else %>
       <div class="bundle-cards">
         <% @bundles.each do |bundle| %>
         <div class="bundle-card">
@@ -43,6 +47,7 @@
         </div>
         <% end %>
       </div>
+      <% end %>
     </div>
 
     <div id="MyOffers" class="tabcontent">
