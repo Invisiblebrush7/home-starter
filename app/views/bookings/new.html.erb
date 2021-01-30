@@ -1,23 +1,54 @@
-<div class="seller-banner">
-<h1> Book "<%= @bundle.name %>" </h1>
+<div class="booking-banner">
+  <div class ="row">
+  <div class="container col-md-8">
+<h1> You're Almost Done!  </h1>
 
+<br>
+
+
+<h2> Order Summary </h2>
+
+<p1><%= @bundle.name.upcase %></p1>
+<br>
+
+<p2> <%= @bundle.description %> </p2>
+<br>
+
+ <% @bundle.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 200, width: 300, crop: :fill %>
+    <% end %>
+<br>
+<p2> Item(s) total: <strong>$<%= @bundle.price %></strong></p2>
 <br>
 <br>
 
-<h3>Description</h3>
-
-<p> <%= @bundle.description %> </p>
-
-<br>
+<h2> Delivery Options </h2>
 
 <%= simple_form_for @booking, url: bundles_offer_bookings_url do |f| %>
-  <%= f.label :shipping_method, label: "Select your shipping method:" %>
+  <%= f.label :shipping_address, label: "Shipping Address:", class: 'shipping-method-font' %>
   <br>
-  <%= f.collection_radio_buttons :shipping_method, [['Delivered', 'Delivered'], ['Picked Up', 'Picked Up']], :first, :last %>
+  <%= f.text_field :shipping_address, class: 'form-inputs' %>
+  <br>
+  <%= f.label :shipping_method, label: "Shipping Method:", class: 'shipping-method-font' %>
+  <br>
+  <%= f.collection_radio_buttons :shipping_method, [['Delivered', 'Delivered'], ['Picked Up', 'Picked Up']], :first, :last, class: "margin-right" %>
+  <br>
   <%= f.text_field :start_date, data:{ provide:'datepicker' }, class: 'datepicker' %>
   <%= f.text_field :end_date, data:{ provide:'datepicker' }, class: 'datepickerEnd' %>
   <br>
-  <%= f.submit %>
+  <br>
+
+<h2> Payment Options </h2>
+<%= f.label :payment_info, label: "Credit Card Details:", class: 'shipping-method-font' %>
+  <br>
+  <%= f.text_field :payment_info %>
+
+<br>
+<br>
+
+  <%= f.button :submit, "Place Order", class: "btn-last" %>
   <!-- https://stackoverflow.com/questions/30522655/how-to-use-date-picker-with-form-for-in-rails -->
 <% end %>
+</div>
+</div>
 </div>
