@@ -14,8 +14,12 @@ class BookingsController < ApplicationController
     @bundle = BundlesOffer.find(params[:bundles_offer_id].to_i)
     @booking.user = @user
     @booking.bundles_offer = @bundle
-    @booking.save
-    redirect_to bundles_offer_url (@bundle)
+    if @booking.save
+      redirect_to success_url
+    else
+      render :new
+    end
+
   end
 
   private

@@ -11,6 +11,7 @@ import "bootstrap-datepicker"
 //= require bootstrap-datepicker
 
 
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -23,6 +24,19 @@ import "bootstrap-datepicker"
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
+
+
+function getDate(){
+  console.log("Get Date");
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+};
+
 
 // External imports
 import "bootstrap";
@@ -38,26 +52,13 @@ document.addEventListener('turbolinks:load', () => {
   // let dates = [];
   // when user chooses dates, add to dates[]
   openTab();
-
-  $('.datepicker').datepicker({
-    autoclose: true,
-    startDate: getDate()
-  });
-  $('.datepickerEnd').datepicker({
-    autoclose: true,
-    startDate: getDateEnd()
+  $('#datepicker').datepicker({
+      startDate: getDate(),
+      pickDate: true,
+      pickTime: true
   });
 });
 
-function getDate(){
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  var yyyy = today.getFullYear();
-
-  today = mm + '/' + dd + '/' + yyyy;
-  return today;
-};
 function getDateEnd(){
   var today = new Date();
   var dd = String(today.getDate() + 1).padStart(2, '0');
