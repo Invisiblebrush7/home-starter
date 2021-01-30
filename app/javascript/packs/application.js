@@ -37,6 +37,7 @@ document.addEventListener('turbolinks:load', () => {
   // https://anrg9.wordpress.com/
   // let dates = [];
   // when user chooses dates, add to dates[]
+  openTab();
 
   $('.datepicker').datepicker({
     autoclose: true,
@@ -46,7 +47,6 @@ document.addEventListener('turbolinks:load', () => {
     autoclose: true,
     startDate: getDateEnd()
   });
-
 });
 
 function getDate(){
@@ -67,3 +67,23 @@ function getDateEnd(){
   today = mm + '/' + dd + '/' + yyyy;
   return today;
 };
+
+function openTab() {
+  document.querySelectorAll(".tablink").forEach((tablink) => {
+    tablink.addEventListener("click", (event) => {
+      document.querySelectorAll(".tablink").forEach((i) => {
+        i.classList.remove("active");
+      });
+      document.querySelectorAll(".tabcontent").forEach((tabcontent) => {
+        tabcontent.style.display = "none";
+      });
+      event.currentTarget.classList.add ("active");
+      document.getElementById(event.currentTarget.classList[1]).style.display = "block";
+    })
+  });
+  document.querySelector("#default").click();
+};
+
+var elem = document.querySelector('see-bundles-header');
+elem.remove();
+

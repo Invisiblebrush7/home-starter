@@ -1,0 +1,40 @@
+.bundle-cards{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding:16px;
+  flex-grow: 1;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.bundle-card {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  justify-content: space-around;
+  font-size: 22px;
+  color: $light-sea-grass;
+  font-weight: bolder;
+  border-radius: 10px;
+  height: 300px;
+  width: 100%;
+}
+
+.bundle-card-footer {
+  background: white;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+  // border-radius: 0px 0px 10px 10px;
+}
+
+.view {
+  color: $purple;
+  font-size: 12px;
+}
+
+.font {
+  color: white;
+}
+
+

@@ -12,6 +12,43 @@
   </head>
 
   <body>
+    <div class="navbar">
+    <a class="navbar-brand" href="/">
+      <%= image_tag "house-logo.png", class: "logo" %>
+    </a>
+    <a href="#news">Contact</a>
+    <a href="#contact">About</a>
+
+    <div class="signup-btn">
+      <% if !user_signed_in? %>
+      <%= link_to "Log In", new_user_session_url, class: "margin-right-navbar" %>
+      <%= link_to "Sign Up", new_user_registration_url, class: "btn-secondary" %>
+      <% end %>
+
+      <% if user_signed_in? %>
+      <%= link_to "Log Out", destroy_user_session_url, method: :delete, class: "margin-right-navbar"  %>
+      <%= link_to "Manage Account", bundles_offers_url, class: "btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
     <%= yield %>
+          <!-- code a footer -->
+      <div class="footer">
+        <p><center>Follow Us</center></p>
+        <div class="links">
+          <a href="#">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
   </body>
 </html>

@@ -1,6 +1,14 @@
 class BundlesOffersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @bundles = BundlesOffer.all
+    if user_signed_in? && current_user.user_type == "Renter"
+      @user = current_user
+    elsif user_signed_in? && current_user.user_type == "Seller"
+      @user = current_user
+      @bundles_user = BundlesOffer.where("user_id = #{@user.id}")
+    end
   end
 
   def show
@@ -14,15 +22,19 @@ class BundlesOffersController < ApplicationController
 
   def new
     @bundle = BundlesOffer.new
+    @user = current_user
   end
 
   def create
     @bundle = BundlesOffer.new(bundles_offer_params)
-    if @bundle.save
-      redirect_to bundles_offers_url
-    else
-      render :new
+    @bundle.user = current_user
+    params[:bundles_offer][:furnitures].each do |furniture_id|
+      if Furniture.exists?(furniture_id)
+        @bundle.furnitures.push(Furniture.find(furniture_id))
+      end
     end
+    @bundle.user.update_attribute(:user_type, "Seller") if @bundle.save
+    redirect_to bundles_offers_url
   end
 
   def edit
@@ -48,8 +60,6 @@ class BundlesOffersController < ApplicationController
   private
 
   def bundles_offer_params
-    params.require(:BundlesOffer).permit(:name, :description, :price, :user_id)
-    # I don't know if user id will work
+    params.require(:bundles_offer).permit(:name, :description, :price, :furnitures, photos: [])
   end
-
 end

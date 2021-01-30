@@ -1,7 +1,60 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Home Starter</title>
+  <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
+
+  <!-- We need this line below for responsiveness! -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
 
 
-<h3> <%= user_signed_in? %> </h3>
 
-<%= link_to "delete session", destroy_user_session_url, method: :delete  %>
+ <!-- code a Hero / Banner section -->
+ <div class="banner">
+  <div class="container">
+    <h1>Home Starter</h1>
+    <p>Furnish your home without making a long-term committment </p>
+    <% if user_signed_in? == false%>
+    <%= link_to "Rent Now", bundles_offers_url, class: "btn-primary" %>
+    <% elsif current_user.user_type == "Seller" %>
+    <%= link_to "My Offers", bundles_offers_url, class: "btn-primary" %>
+    <% else %>
+    <%= link_to "Rent Now", bundles_offers_url, class: "btn-primary" %>
+    <% end %>
+
+    <!--  <a class="btn-primary" href="#">Rent Now</a> -->
+  </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="container row-styles">
+  <br>
+  <br>
+
+  <h2>How it works</h2>
+  <br>
+  <div class="row">
+    <div class="cards">
+      <div class="card img1 col-md-4 m-2">
+        <h3>Browse Furniture Bundles</h3>
+        <p>Over 500+ high-quality furnishing bundles to look through</p>
+      </div>
+      <div class="card img2 col-md-4 m-2">
+        <h3>Pick Your Favorite Bundle</h3>
+        <p>Find the furniture that best suits your space</p>
+      </div>
+      <div class="card img3 col-md-4 m-2">
+        <h3>Wait for Your Rental</h3>
+        <p>We'll ship the furniture to your door within 2 weeks</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

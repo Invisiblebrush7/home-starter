@@ -1,0 +1,22 @@
+.footer {
+  background-color: $light-gray;
+  padding: 30px;
+  text-align: center;
+}
+
+.footer a {
+  font-size: 30px;
+  color: $light-sea-grass;
+}
+
+.links {
+  list-style: none;
+}
+
+.footer links li {
+  display: inline-block;
+}
+
+.footer p {
+  color: $black;
+}

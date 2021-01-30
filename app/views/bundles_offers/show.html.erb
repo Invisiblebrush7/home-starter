@@ -1,17 +1,32 @@
-<h1> Show a specific bundle </h1>
+
+<!-- Display -->
+
+<div class="show-container">
+  <div class="show-image">
+    <%= link_to "Go back", bundles_offers_url, class:"go-back-button" %>
+    <br>
+    <% @bundle.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+
+  </div>
 
 
-<h3> Name: <%= @bundle.name %> </h3>
+  <div class="show-text">
+    <h2> <%= @bundle.name.capitalize %> </h2>
+    <h3> $<%= @bundle.price %> </h3>
+    <p> <%= @bundle.description %> </p>
+
+    <% @bundle.furnitures.each do |furniture| %>
+    <p> <%= furniture.name %> </p>
+    <% end %>
+
+    <%= link_to "Rent Furniture", new_bundles_offer_booking_url(@bundle.id), class: "btn btn-secondary"  %>
+    <br><br>
+    <h4> Arrives in 2-5 weeks if you order today</h4>
 
 
-<p> <%= @bundle.description %> </p>
+  </div>
+</div>
 
 
-<% @bookings.each do |booking|  %>
-  <h3> Shipping Method: <%= booking.shipping_method %> </h3>
-<% end %>
-<br>
-<br>
-<br>
-
-<%= link_to "Book this Bundle!", new_bundles_offer_booking_url(@bundle.id)  %>

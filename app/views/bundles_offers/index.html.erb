@@ -1,7 +1,92 @@
-<h1> All Bundles </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Furniture Bundles</title>
+  <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
+  <!-- Top Nav -->
+  <!-- Rest of Page -->
+  <div class="seller-banner">
+    <% if user_signed_in? %>
+    <h1>Welcome back, <%= @user.first_name.capitalize %>!</h1>
+    <% else %>
+    <h1>Hello there!</h1>
+    <% end %>
+    <div class ="row">
+      <div class="container col-2">
+        <%= link_to "Rent Out Furniture", new_bundles_offer_url, class: "btn-seller"  %>
+      </div>
+    </div>
+    <br>
+    <br>
+    <% if user_signed_in? && @user.user_type == "Seller" %>
+    <div class="tab">
+      <button id="default" class="tablink All"> All Offers </button>
+      <button class="tablink MyOffers "> My Offers </button>
+    </div>
 
+    <div id="All" class="tabcontent">
+      <h2> Browse All Furniture Sets </h2>
+      <div class="bundle-cards">
+        <% @bundles.each do |bundle| %>
+        <div class="bundle-card">
+          <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
+          <div class= "bundle-card-footer">
+            <h4> <%= bundle.name.capitalize %> </h4>
+            <div class="description">
+              <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
+              <p> $<%= bundle.price %> </p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
 
-<% @bundles.each do |bundle| %>
-  <h4>Name: <%= bundle.name %> </h4>
-  <h5>Description: <%= bundle.description %> </h5>
-<% end %>
+    <div id="MyOffers" class="tabcontent">
+      <h2> Your Furniture Sets Available for Rent </h2>
+      <div class="bundle-cards">
+        <% @bundles_user.each do |bundle| %>
+        <div class="bundle-card">
+          <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
+          <div class= "bundle-card-footer">
+            <h4> <%= bundle.name.capitalize %> </h4>
+            <div class="description">
+              <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
+              <p> $<%= bundle.price %> </p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <% else %>
+
+    <% if @bundles.count > 0 %>
+    <h2> See All Bundles </h2>
+    <div class="bundle-cards">
+      <% @bundles.each do |bundle| %>
+      <div class="bundle-card">
+        <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
+        <div class= "bundle-card-footer">
+          <h4> <%= bundle.name.capitalize %> </h4>
+          <div class="description">
+            <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
+            <p> $<%= bundle.price %> </p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% else %>
+      <h3> <center> All furniture sets are rented out at the moment. </center></h3>
+      <p> <center> Lease some furniture or check back in a couple hours </center></p>
+    </div>
+    <% end %>
+    <% end %>
+
+  </div>
+</div>
+</body>
+</html>

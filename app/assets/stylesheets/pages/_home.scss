@@ -1,1 +1,22 @@
-// Specific CSS for your home-page
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Halant:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Halant:wght@500&family=Nunito+Sans:wght@300&display=swap");
+
+/* Utilities */
+body {
+  margin: 0;
+  font-family: Nunito Sans;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Halant;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Custom design below! */
