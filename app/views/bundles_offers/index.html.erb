@@ -62,11 +62,10 @@
         </div>
         <% else %>
         <div class="rented-filter">
-          <h3 class="rented-heading">Rented</h3>
           <div class="bundle-card">
             <%= cl_image_tag bundle.photos[0].key, height:300, width: 300, crop: :fill %>
             <div class= "bundle-card-footer">
-              <h4> <%= bundle.name.capitalize %> </h4>
+              <h4> <%= bundle.name.capitalize %> - RENTED! </h4>
               <div class="description">
                 <%= link_to "View", bundles_offer_url(bundle), class: "view" %>
                 <p> $<%= bundle.price %> </p>

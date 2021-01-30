@@ -1,7 +1,5 @@
 .rented-filter {
-  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2));
-  // filter: grayscale(1);
-  filter: brightness(0.6);
+  filter: brightness(0.4);
 }
 .rented-filter:hover {
   filter: none;
