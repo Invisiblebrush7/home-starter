@@ -21,10 +21,12 @@
     <p> <%= furniture.name %> </p>
     <% end %>
 
-    <%= link_to "Rent Furniture", bundles_offers_url, class: "btn btn-secondary"  %>
+    <%= link_to "Rent Furniture", new_bundles_offer_booking_url(@bundle.id), class: "btn btn-secondary"  %>
     <br><br>
     <h4> Arrives in 2-5 weeks if you order today</h4>
 
 
   </div>
 </div>
+
+

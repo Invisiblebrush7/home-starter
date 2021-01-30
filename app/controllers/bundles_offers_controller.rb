@@ -14,6 +14,7 @@ class BundlesOffersController < ApplicationController
   def show
     if BundlesOffer.exists?(params[:id])
       @bundle = BundlesOffer.find(params[:id])
+      @bookings = @bundle.bookings
     else
       redirect_to bundles_offers_url
     end

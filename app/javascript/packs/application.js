@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+import "bootstrap-datepicker"
+//= require bootstrap-datepicker
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -31,8 +33,40 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  // https://bootstrap-datepicker.readthedocs.io/en/latest/options.html
+  // https://anrg9.wordpress.com/
+  // let dates = [];
+  // when user chooses dates, add to dates[]
   openTab();
+
+  $('.datepicker').datepicker({
+    autoclose: true,
+    startDate: getDate()
+  });
+  $('.datepickerEnd').datepicker({
+    autoclose: true,
+    startDate: getDateEnd()
+  });
 });
+
+function getDate(){
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+};
+function getDateEnd(){
+  var today = new Date();
+  var dd = String(today.getDate() + 1).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+};
 
 function openTab() {
   document.querySelectorAll(".tablink").forEach((tablink) => {
@@ -50,8 +84,6 @@ function openTab() {
   document.querySelector("#default").click();
 };
 
-
 var elem = document.querySelector('see-bundles-header');
 elem.remove();
-
 
