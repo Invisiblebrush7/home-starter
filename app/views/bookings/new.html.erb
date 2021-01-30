@@ -13,6 +13,7 @@
 
 <p2> <%= @bundle.description %> </p2>
 <br>
+<br>
 
  <% @bundle.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 200, width: 300, crop: :fill %>
@@ -22,31 +23,62 @@
 <br>
 <br>
 
-<h2> Delivery Options </h2>
+<h2> Shipping Information </h2>
 
 <%= simple_form_for @booking, url: bundles_offer_bookings_url do |f| %>
-  <%= f.label :shipping_address, label: "Shipping Address:", class: 'shipping-method-font' %>
+
+  <p2> Full Name* </p2>
   <br>
   <%= f.text_field :shipping_address, class: 'form-inputs' %>
   <br>
-  <%= f.label :shipping_method, label: "Shipping Method:", class: 'shipping-method-font' %>
+
+  <p2> Shipping Address* </p2>
+  <br>
+  <%= f.text_field :shipping_address, class: 'form-inputs',placeholder: "Street Address"  %>
+  <br>
+  <%= f.text_field :shipping_address, class: 'form-inputs', placeholder: "Apartment, suite, unit, etc. (optional)" %>
+  <br>
+  <%= f.text_field :shipping_address, class: 'form-inputs', placeholder: "City, Country & Zip Zode" %>
+  <br>
+
+  <p2> Shipping Options* </p2>
   <br>
   <%= f.collection_radio_buttons :shipping_method, [['Delivered', 'Delivered'], ['Picked Up', 'Picked Up']], :first, :last, class: "margin-right" %>
   <br>
+  <p2> Rental Start </p2>
   <%= f.text_field :start_date, data:{ provide:'datepicker' }, class: 'datepicker' %>
+  <p2> Rental End </p2>
   <%= f.text_field :end_date, data:{ provide:'datepicker' }, class: 'datepickerEnd' %>
   <br>
   <br>
 
-<h2> Payment Options </h2>
-<%= f.label :payment_info, label: "Credit Card Details:", class: 'shipping-method-font' %>
+<h2> Payment Method </h2>
+<p2> Credit Card Number </p2>
+
   <br>
-  <%= f.text_field :payment_info %>
+  <%= f.text_field :payment_info, class: 'form-inputs'  %>
+  <br>
+  <p2> Zip Code * </p2>
+  <%= f.text_field :payment_info, class: 'form-inputs-2' %>
+  <p2> CSV * </p2>
+  <%= f.text_field :payment_info, class: 'form-inputs-3' %>
+
+  <br>
+
+<p2> Billing Address* </p2>
+<br>
+  <%= f.text_field :shipping_address, class: 'form-inputs',placeholder: "Street Address"  %>
+  <br>
+  <%= f.text_field :shipping_address, class: 'form-inputs', placeholder: "Apartment, suite, unit, etc. (optional)" %>
+  <br>
+  <%= f.text_field :shipping_address, class: 'form-inputs', placeholder: "City, Country & Zip Zode" %>
+  <br>
 
 <br>
 <br>
 
   <%= f.button :submit, "Place Order", class: "btn-last" %>
+</div>
   <!-- https://stackoverflow.com/questions/30522655/how-to-use-date-picker-with-form-for-in-rails -->
 <% end %>
 </div>
