@@ -2,7 +2,10 @@ class BundlesOffersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @bundles = BundlesOffer.all
+    @bundles = []
+    BundlesOffer.all.each do |b|
+      @bundles.push(b) if b.bookings.count.zero?
+    end
     if user_signed_in? && current_user.user_type == "Renter"
       @user = current_user
     elsif user_signed_in? && current_user.user_type == "Seller"
@@ -34,6 +37,7 @@ class BundlesOffersController < ApplicationController
     #   end
     # end
     @bundle.user.update_attribute(:user_type, "Seller") if @bundle.save
+    redirect_to bundles_offers_url
   end
 
   def edit

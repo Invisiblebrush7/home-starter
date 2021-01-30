@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   end
 
   def success
+    @booking = Booking.last
   end
 
   def terms
