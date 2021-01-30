@@ -34,7 +34,6 @@ class BundlesOffersController < ApplicationController
     #   end
     # end
     @bundle.user.update_attribute(:user_type, "Seller") if @bundle.save
-    redirect_to bundles_offers_url
   end
 
   def edit
