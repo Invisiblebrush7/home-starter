@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to success_url
     else
+      raise
       render :new
     end
 

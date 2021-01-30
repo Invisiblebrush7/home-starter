@@ -22,6 +22,31 @@
   margin-right: 10px;
 }
 
+.form-inputs {
+ border-style: solid;
+  border-color: white;
+  width: 400px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-inputs-2 {
+ border-style: solid;
+  border-color: white;
+  width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-inputs-3 {
+ border-style: solid;
+  border-color: white;
+  width: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
 // Datepicker standalone .less buildfile.  Includes all necessary mixins/variables/rules from bootstrap
 // and imports the included datepicker.less to output a minimal standalone datepicker.css
 //
@@ -66,5 +91,22 @@ $dropdownLinkBackgroundHover:   #fff;
     th, td {
       padding: 4px 5px;
     }
+    td.active {
+      color: white;
+      background-color: green;
+      border-radius: 3px;
+    }
   }
+}
+
+.datepicker {
+  border-style: solid;
+  border-color: white;
+  width: 100px;
+}
+
+.datepickerEnd {
+  border-style: solid;
+  border-color: white;
+  width: 100px;
 }
