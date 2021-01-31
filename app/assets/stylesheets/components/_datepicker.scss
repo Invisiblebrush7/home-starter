@@ -26,6 +26,11 @@ $dropdownLinkBackgroundHover:   #fff;
 // The dropdown menu (ul)
 // ----------------------
 .datepicker{
+  $.disabled {
+    color: black;
+    background-color: green;
+    border-radius: 3px;
+  }
   &.dropdown-menu {
     position: absolute;
     top: 100%;
